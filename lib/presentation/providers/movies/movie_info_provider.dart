@@ -5,11 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final movieInfoProvider =
     StateNotifierProvider<MovieMapNotifier, Map<String, Movie>>(
   (ref) {
+//En fetchMovieId, obtenemos la función implementada en el repositorio para poder usarla
     final fetchMovieId = ref.watch(movieRepositoryProvider).getMovieById;
     return MovieMapNotifier(getMovie: fetchMovieId);
   },
 );
 
+//Aqui definimos que obtendremos dicha función
 typedef GetMovieCallback = Future<Movie> Function(String movieId);
 
 class MovieMapNotifier extends StateNotifier<Map<String, Movie>> {

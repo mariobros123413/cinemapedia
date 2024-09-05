@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final actorsByMovieProvider =
     StateNotifierProvider<ActorsByMovieNotifier, Map<String, List<Actor>>>(
         (ref) {
-  final fetchMovieId = ref.watch(actorRepositoryProvider).getActorsByMovie;
-  return ActorsByMovieNotifier(getActors: fetchMovieId);
+  final actorsRepository = ref.watch(actorRepositoryProvider);
+  return ActorsByMovieNotifier(getActors: actorsRepository.getActorsByMovie);
 });
 
 typedef GetActorsCallback = Future<List<Actor>> Function(String movieId);
