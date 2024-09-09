@@ -17,8 +17,9 @@ class MovieMapper {
         posterPath: (movieDB.posterPath != '')
             ? 'https://image.tmdb.org/t/p/w500/${movieDB.posterPath}'
             // : 'https://ih1.redbubble.net/image.4905811447.8675/flat,750x,075,f-pad,750x1000,f8f8f8.jpg',
-            : 'no-poster',
-        releaseDate: movieDB.releaseDate,
+            : 'https://lascrucesfilmfest.com/wp-content/uploads/2018/01/no-poster-available.jpg',
+        releaseDate:
+            movieDB.releaseDate != null ? movieDB.releaseDate! : DateTime.now(),
         title: movieDB.title,
         video: movieDB.video,
         voteAverage: movieDB.voteAverage,
