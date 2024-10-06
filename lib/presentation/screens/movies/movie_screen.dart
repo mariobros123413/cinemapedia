@@ -200,8 +200,10 @@ class _CustomSliverAppBar extends ConsumerWidget {
       foregroundColor: Colors.white,
       actions: [
         IconButton(
-            onPressed: () {
-              ref.watch(localStorageRepositoryProvider).toggleFavorite(movie);
+            onPressed: () async {
+              // Cambiar ref.watch() a ref.read() para que ejecute la acción pero no esté escuchando activamente.
+              await ref.read(localStorageRepositoryProvider).toggleFavorite(
+                  movie); // ref.watch() está diseñado para observar el estado, pero no para ejecutar funciones directamente.
               ref.invalidate(isFavoriteProdiver(movie
                   .id)); // Invalida el estado del provider, y lo regresa a su estado original. Si el contador era 0, lo regresa a 0
             },
